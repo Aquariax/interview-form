@@ -8,16 +8,15 @@ module.exports = {
     connection: {
       filename: './data/database.sqlite3'
     },
+    migrations: {
+      directory: './data/migrations',
+      tableName: 'knex_migrations',
+    },
     pool: {
       afterCreate: (conn, done) => {
         conn.run("PRAGMA foreign_keys = ON", done);
       }
-    },
-    migrations: {
-      directory: "./data/migrations",
-      tableName: "dbmigrations",
-    },
-
+    }
   },
 
   staging: {
